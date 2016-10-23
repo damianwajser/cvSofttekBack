@@ -1,4 +1,4 @@
-package com.prisma.todopago.model;
+package com.softtek.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

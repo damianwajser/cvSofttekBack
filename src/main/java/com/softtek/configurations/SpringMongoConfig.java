@@ -1,4 +1,4 @@
-package com.prisma.todopago.configurations;
+package com.softtek.configurations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

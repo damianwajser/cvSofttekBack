@@ -1,4 +1,4 @@
-package com.prisma.todopago.controllers;
+package com.softtek.controllers;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.prisma.todopago.model.Person;
-import com.prisma.todopago.repository.PersonRepository;
+import com.softtek.model.Person;
+import com.softtek.repository.PersonRepository;
 
 @RestController
 @RequestMapping("/api/person")

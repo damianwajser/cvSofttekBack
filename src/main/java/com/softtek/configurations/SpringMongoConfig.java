@@ -2,20 +2,20 @@ package com.softtek.configurations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 
-import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 
 @Configuration
 public class SpringMongoConfig {
 
-	@Bean
-	public Mongo mongo() throws Exception {
-		return new MongoClient("127.0.0.1" + ":" + 27017);
+	public @Bean MongoDbFactory mongoDbFactory() throws Exception {
+		return new SimpleMongoDbFactory(new MongoClient("45.55.74.121" + ":" + 27017), "test");
 	}
 
-	  public @Bean MongoTemplate mongoTemplate() throws Exception {
-	      return new MongoTemplate(mongo(), "test");
-	  }
+	public @Bean MongoTemplate mongoTemplate() throws Exception {
+		return new MongoTemplate(mongoDbFactory());
+	}
 }

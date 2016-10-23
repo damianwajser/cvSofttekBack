@@ -13,4 +13,6 @@ public interface PersonService {
 
 	Collection<Person> getByTechs(String[] techs, int page);
 
+	Person findById(String id);
+
 }

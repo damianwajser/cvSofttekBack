@@ -55,6 +55,15 @@ public class PersonSericeImpl implements PersonService {
 		q.limit(Count.CANT_PAGE);//catidad por pagina
 		Criteria[] criterias = buildCriteriaByTech(techs);
 		q.addCriteria(new Criteria().orOperator(criterias));
-		return mongoOperation.find(q, Person.class);
+		Collection<Person> person = mongoOperation.find(q, Person.class);
+		return person;
 	}
+
+	@Override
+	public Person findById(String id) {
+		Person p = repository.findOne(id);
+		return p;
+	}
+
+	
 }

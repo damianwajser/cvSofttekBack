@@ -33,10 +33,18 @@ public class PersonController extends AbstractController<Person>{
     	return super.singleResult(count);
     }
     
-    @RequestMapping(method = RequestMethod.GET, path="/tech/page/{page}")
+    @RequestMapping(method = RequestMethod.GET, path="/page/{page}")
     public ResponseEntity<Collection<Person>> getByTech(@RequestParam(value="tech") String[] techs, @PathVariable(value="page") int page) {
     	Collection<Person> result = service.getByTechs(techs, page);
     	return super.collectionResult(result);
     }
+    
+    @RequestMapping(method = RequestMethod.GET, path="/{id}")
+    public ResponseEntity<Person> getByTech(@PathVariable(value="id") String id) {
+    	Person result = service.findById(id);
+    	return super.singleResult(result);
+    }
+    
+    
     
 }

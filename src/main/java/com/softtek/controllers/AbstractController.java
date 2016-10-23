@@ -55,7 +55,7 @@ public class AbstractController<T> {
         httpHeaders.setLocation(ServletUriComponentsBuilder
                 .fromCurrentRequest().path("/")
                 .build().toUri());
-        httpHeaders.setAccessControlAllowOrigin("*");
+        //httpHeaders.setAccessControlAllowOrigin("*");
         httpHeaders.setContentType(contentType);
         return httpHeaders;
     }

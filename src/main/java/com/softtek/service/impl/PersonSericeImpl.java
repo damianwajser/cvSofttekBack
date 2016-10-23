@@ -31,7 +31,7 @@ public class PersonSericeImpl implements PersonService {
 	public Count countByTechs(String[] techs) {
 		Query q = new Query();
 		Criteria[] criterias = buildCriteriaByTech(techs);
-		q.addCriteria(new Criteria().orOperator(criterias));
+		q.addCriteria(new Criteria().andOperator(criterias));
 		Long count = mongoOperation.count(q, Person.class);
 		Count c = new Count(count);
 		c.setCantPaginas(count / Count.CANT_PAGE);
@@ -54,7 +54,7 @@ public class PersonSericeImpl implements PersonService {
 		q.skip(page*Count.CANT_PAGE);//desde el documento que comienza
 		q.limit(Count.CANT_PAGE);//catidad por pagina
 		Criteria[] criterias = buildCriteriaByTech(techs);
-		q.addCriteria(new Criteria().orOperator(criterias));
+		q.addCriteria(new Criteria().andOperator(criterias));
 		Collection<Person> person = mongoOperation.find(q, Person.class);
 		return person;
 	}

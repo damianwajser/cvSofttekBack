@@ -45,9 +45,9 @@ public class AbstractController<T> {
         return new ResponseEntity<T>(result, httpHeaders, HttpStatus.OK);
     }
     
-    protected ResponseEntity<Count> singleResult(Long result) {
+    protected ResponseEntity<Count> singleResult(Count result) {
         HttpHeaders httpHeaders = buildHeaders();
-        return new ResponseEntity<Count>(new Count(result), httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<Count>(result, httpHeaders, HttpStatus.OK);
     }
 
     private HttpHeaders buildHeaders() {

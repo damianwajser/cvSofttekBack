@@ -2,12 +2,15 @@ package com.softtek.service;
 
 import java.util.Collection;
 
+import com.softtek.model.Count;
 import com.softtek.model.Person;
 
 public interface PersonService {
 
 	Collection<Person> findAll();
 
-	Long countByTechs(String[] techs);
+	Count countByTechs(String[] techs);
+
+	Collection<Person> getByTechs(String[] techs, int page);
 
 }

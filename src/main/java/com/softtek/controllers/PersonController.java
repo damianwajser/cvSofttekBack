@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,8 +28,15 @@ public class PersonController extends AbstractController<Person>{
     }
     
     @RequestMapping(method = RequestMethod.GET, path="/count")
-    public ResponseEntity<Count> getByTech(@RequestParam(value="tech") String[] techs) {
-    	Long count = service.countByTechs(techs);
+    public ResponseEntity<Count> getCountByTech(@RequestParam(value="tech") String[] techs) {
+    	Count count = service.countByTechs(techs);
     	return super.singleResult(count);
     }
+    
+    @RequestMapping(method = RequestMethod.GET, path="/tech/page/{page}")
+    public ResponseEntity<Collection<Person>> getByTech(@RequestParam(value="tech") String[] techs, @PathVariable(value="page") int page) {
+    	Collection<Person> result = service.getByTechs(techs, page);
+    	return super.collectionResult(result);
+    }
+    
 }

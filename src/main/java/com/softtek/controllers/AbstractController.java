@@ -9,6 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.softtek.model.Count;
+
 /**
  * Created by damian on 25/03/16.
  */
@@ -25,7 +27,7 @@ public class AbstractController<T> {
 //                .buildAndExpand(((TransactionGeneratedData) result).getTransactionid()).toUri());
 
         httpHeaders.setContentType(contentType);
-        return new ResponseEntity<>(result, httpHeaders, HttpStatus.CREATED);
+        return new ResponseEntity<T>(result, httpHeaders, HttpStatus.CREATED);
     }
 
     protected ResponseEntity<T> createdErrorResult(T result) {
@@ -35,12 +37,17 @@ public class AbstractController<T> {
 
     protected ResponseEntity<Collection<T>> collectionResult(Collection<T> result) {
         HttpHeaders httpHeaders = buildHeaders();
-        return new ResponseEntity<>(result, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<Collection<T>>(result, httpHeaders, HttpStatus.OK);
     }
 
     protected ResponseEntity<T> singleResult(T result) {
         HttpHeaders httpHeaders = buildHeaders();
-        return new ResponseEntity<>(result, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<T>(result, httpHeaders, HttpStatus.OK);
+    }
+    
+    protected ResponseEntity<Count> singleResult(Long result) {
+        HttpHeaders httpHeaders = buildHeaders();
+        return new ResponseEntity<Count>(new Count(result), httpHeaders, HttpStatus.OK);
     }
 
     private HttpHeaders buildHeaders() {

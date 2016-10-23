@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.softtek.model.Count;
 import com.softtek.model.Person;
 import com.softtek.service.PersonService;
 
@@ -26,7 +27,8 @@ public class PersonController extends AbstractController<Person>{
     }
     
     @RequestMapping(method = RequestMethod.GET, path="/count")
-    public Long getByTech(@RequestParam(value="tech") String[] techs) {
-    	return service.countByTechs(techs);
+    public ResponseEntity<Count> getByTech(@RequestParam(value="tech") String[] techs) {
+    	Long count = service.countByTechs(techs);
+    	return super.singleResult(count);
     }
 }

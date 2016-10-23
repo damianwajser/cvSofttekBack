@@ -29,4 +29,6 @@ public class TechServicesImpl implements TechService {
 		return result;
 	}
 
+
+
 }

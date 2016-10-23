@@ -26,8 +26,10 @@ public class TechController extends AbstractController<Tech>{
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Tech> save (@RequestBody Tech tech){
-		
+	
 		Tech result = service.insert(tech);
 		return super.singleResult(result);
 	}
+	
+		
 }

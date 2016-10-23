@@ -1,7 +1,7 @@
 package com.softtek.model;
 
 public class Count {
-	public final static int CANT_PAGE = 20;
+	public final static int CANT_PAGE = 10;
 	private Long count;
 	private Long cantPaginas;
 	
